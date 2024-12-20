@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${product.id == null} ? 'Добавить товар' : 'Редактировать товар'"></title>
+    <link rel="stylesheet" href="/css/productForm.css">
+</head>
+<body>
+<h1 th:text="${product.id == null} ? 'Добавить товар' : 'Редактировать товар'"></h1>
+<div class="container">
+    <form th:action="${product.id == null} ? '/products/create' : '/products/edit/' + ${product.id}"
+          th:object="${product}"
+          method="post">
+        <div class="form-group">
+            <label for="name">Название товара</label>
+            <input type="text" id="name" th:field="*{name}" class="form-input" placeholder="Введите название товара" required>
+        </div>
+        <div class="form-group">
+            <label for="purchasePrice">Цена закупки</label>
+            <input type="number" id="purchasePrice" th:field="*{purchasePrice}" class="form-input" step="0.01" placeholder="Введите цену закупки" required>
+        </div>
+        <div class="form-group">
+            <label for="sellingPrice">Цена продажи</label>
+            <input type="number" id="sellingPrice" th:field="*{sellingPrice}" class="form-input" step="0.01" placeholder="Введите цену продажи" required>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Количество</label>
+            <input type="number" id="quantity" th:field="*{quantity}" class="form-input" placeholder="Введите количество" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Категория</label>
+            <select id="category" th:field="*{categoryId}" class="form-input">
+                <th:block th:each="category : ${categories}">
+                    <option th:value="${category.id}" th:text="${category.name}" th:if="${category != null}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit" class="create-btn" th:text="${product.id == null} ? 'Создать товар' : 'Сохранить изменения'"></button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список категорий</title>
+    <link rel="stylesheet" href="/css/CategoryList.css">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Список категорий</h1>
+
+    <div class="actions">
+        <a href="/categories/create" class="add-btn">Добавить категорию</a>
+        <a href="/products" class="back-btn">На главную</a>
+    </div>
+
+    <table class="product-table">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categories}">
+            <td th:text="${category.name}"></td>
+            <td class="product-actions">
+                <a th:href="@{/categories/edit/{id}(id=${category.id})}">Редактировать</a> |
+                <a th:href="@{/categories/delete/{id}(id=${category.id})}" onclick="return confirm('Вы уверены?');">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

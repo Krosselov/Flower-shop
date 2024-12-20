@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.add-btn, .back-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 10px 5px;
+    text-align: center;
+}
+
+.add-btn:hover, .back-btn:hover {
+    background-color: #0056b3;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.product-table th, .product-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    background-color: #f4f4f4;
+    color: #555;
+}
+
+.product-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.product-table td a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.product-table td a:hover {
+    color: #0056b3;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.product-actions a {
+    color: #28a745;
+    text-decoration: none;
+}
+
+.product-actions a:hover {
+    color: #218838;
+}

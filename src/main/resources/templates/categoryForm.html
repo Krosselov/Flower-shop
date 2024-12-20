@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${category.id == null} ? 'Добавить категорию' : 'Редактировать категорию'"></title>
+    <link rel="stylesheet" href="/css/categoryForm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="form-wrapper">
+        <h1 th:text="${category.id == null} ? 'Добавить категорию' : 'Редактировать категорию'"></h1>
+        <form th:action="@{${category.id == null} ? '/categories/create' : '/categories/edit/' + ${category.id}}"
+              th:object="${category}"
+              method="post">
+
+        <div class="form-group">
+                <label for="name">Название категории</label>
+                <input type="text" id="name" th:field="*{name}" class="form-input" placeholder="Введите название категории" required>
+            </div>
+            <button type="submit" class="create-btn" th:text="'Сохранить изменения'"></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

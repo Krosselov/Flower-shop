@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подробности товара</title>
+    <link rel="stylesheet" href="/css/productDetail.css?v=1.0">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Подробности товара</h1>
+
+    <div class="product-card">
+        <div class="product-image">
+            <span>Фото</span>
+        </div>
+        <div class="product-info">
+            <p><strong>Название:</strong> <span th:text="${product.name}"></span></p>
+            <p><strong>Цена закупки:</strong> <span th:text="${product.purchasePrice}"></span> ₽</p>
+            <p><strong>Цена продажи:</strong> <span th:text="${product.sellingPrice}"></span> ₽</p>
+            <p><strong>Количество:</strong> <span th:text="${product.quantity}"></span></p>
+            <p><strong>Категория:</strong> <span th:text="${categoryMap[product.categoryId]}"></span></p>
+        </div>
+    </div>
+
+    <a href="/products" class="back-btn">Назад</a>
+</div>
+</body>
+</html>

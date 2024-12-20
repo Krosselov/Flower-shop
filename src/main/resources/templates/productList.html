@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список товаров</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Список товаров</h1>
+
+    <div class="action-buttons">
+        <a href="/products/create" class="add-btn">Добавить товар</a>
+        <a href="/categories/create" class="add-btn">Добавить категорию</a>
+    </div>
+
+    <div class="main-content">
+
+        <div class="sidebar">
+            <div class="stats">
+                <h2>Общая информация</h2>
+                <p>Общее количество товаров: <span th:text="${totalQuantity}"></span></p>
+                <p>Общий доход: <span th:text="${totalIncome}"></span> ₽</p>
+            </div>
+            <div class="categories">
+                <h2>Категории</h2>
+                <div th:each="category : ${categories}">
+                    <a th:href="@{/products/filter/{id}(id=${category.id})}" class="category-btn">
+                        <span th:text="${category.name}"></span>
+                    </a>
+                </div>
+                <a href="/products" class="category-btn reset-btn">Сбросить фильтр</a>
+            </div>
+        </div>
+
+        <div class="product-cards">
+            <div class="product-card" th:each="product : ${products}">
+                <div class="product-image-placeholder">
+                    <span>Фото товара</span>
+                </div>
+                <div class="product-details">
+                    <h3 th:text="${product.name}"></h3>
+                    <p>Цена закупки: <span th:text="${product.purchasePrice}"></span> ₽</p>
+                    <p>Цена продажи: <span th:text="${product.sellingPrice}"></span> ₽</p>
+                    <p>Количество: <span th:text="${product.quantity}"></span></p>
+                    <p>Категория: <span th:text="${categoryMap[product.categoryId]}"></span></p>
+                    <div class="product-actions">
+                        <a th:href="@{/products/{id}(id=${product.id})}">Инфо</a>
+                        <a th:href="@{/products/edit/{id}(id=${product.id})}">Изм.</a>
+                        <a th:href="@{/products/delete/{id}(id=${product.id})}"
+                           onclick="return confirm('Вы уверены?');">Уд.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
